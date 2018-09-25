@@ -104,7 +104,18 @@ eval("/* Mapbox GL JS is licensed under the 3-Clause BSD License. Full text of l
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// const index = require('../public/bundle')\nconsole.log('Hello from JavaScript');\n\nconst mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\nmapboxgl.accessToken = 'pk.eyJ1IjoibWFkZGllZWlkZGFtIiwiYSI6ImNqbWk1ZG9tejAxZW0zb3JwMmk5NXJ6cnoifQ.ZDIkuER2XZwMilQIqlRp_A';\n\nconst map = new mapboxgl.Map({\n  container: \"map\",\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: \"mapbox://styles/mapbox/streets-v10\" // mapbox has lots of different map styles available.\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\nconst buildMarker = __webpack_require__(/*! ./marker */ \"./src/marker.js\")\nmapboxgl.accessToken = 'pk.eyJ1IjoibWFkZGllZWlkZGFtIiwiYSI6ImNqbWk1ZG9tejAxZW0zb3JwMmk5NXJ6cnoifQ.ZDIkuER2XZwMilQIqlRp_A';\n\nconst map = new mapboxgl.Map({\n  container: \"map\",\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: \"mapbox://styles/mapbox/streets-v10\" // mapbox has lots of different map styles available.\n});\n\nbuildMarker('hotels', [-87.6354, 41.8885]).addTo(map)\n\n//Pittsburgh\nbuildMarker('restaurants', [-79.9959, 40.4406]).addTo(map)\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/marker.js":
+/*!***********************!*\
+  !*** ./src/marker.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const mapboxgl = __webpack_require__(/*! mapbox-gl */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\nconst iconURLs = {\n    hotels: 'url(http://i.imgur.com/D9574Cu.png)',\n    restaurants: \"url(http://i.imgur.com/cqR6pUI.png)\",\n    activities: \"url(http://i.imgur.com/WbMOfMl.png)\"\n};\n\nconst buildMarker = (type, coords) => {\n    // Your Code Here\n //adding marker\n  const markerDomEl = document.createElement(\"div\"); // Create a new, detached DIV\n  markerDomEl.style.width = \"32px\";\n  markerDomEl.style.height = \"39px\";\n  markerDomEl.style.backgroundImage = iconURLs[type];\n\n  return new mapboxgl.Marker(markerDomEl).setLngLat(coords);\n};\n\nmodule.exports = buildMarker;\n\n\n//# sourceURL=webpack:///./src/marker.js?");
 
 /***/ })
 
