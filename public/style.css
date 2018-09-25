@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.flex {
+  display: flex
+}
+
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -12,3 +16,37 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+header {
+  display: flex;
+  color: white;
+  background-color: purple;
+}
+
+.pageHeader {
+  padding-left: 50px;
+}
+
+#rightHand {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  margin-left: 75%;
+  flex-direction: column;
+  color: purple;
+  background-color: lightgrey;
+  width: 25%;
+  height: 90%;
+  justify-self: right;
+  align-items: center;
+}
+
+#markerBox {
+  position: absolute;
+  color: white;
+  z-index: 3;
+  background-color: gray;
+  width: 90%;
+  padding: 20px;
+}
+
